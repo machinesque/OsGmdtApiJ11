@@ -6,6 +6,7 @@
 package com.gmdt.osworksj11.api.modeldto;
 
 import java.math.BigDecimal;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -21,6 +22,10 @@ public class OrdemServicoInput {
     @NotNull
     private BigDecimal preco;
 
+    @Valid
+    @NotNull
+    private ClienteIdInput cliente;
+    
     public String getDescricao() {
         return descricao;
     }
@@ -35,6 +40,14 @@ public class OrdemServicoInput {
 
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    public ClienteIdInput getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteIdInput cliente) {
+        this.cliente = cliente;
     }
     
 }

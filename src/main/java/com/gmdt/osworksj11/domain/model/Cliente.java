@@ -6,6 +6,9 @@
 package com.gmdt.osworksj11.domain.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -17,11 +20,18 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    
+
+    @NotBlank
+    @Size(max = 60)
     private String nome;
 
+    @NotBlank
+    @Email
+    @Size(max = 255)
     private String email;
 
+    @NotBlank
+    @Size(max = 20)
     private String telefone;
 
     public long getId() {
@@ -54,6 +64,31 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + (int) (this.id ^ (this.id >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Cliente other = (Cliente) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
     }
 
 }

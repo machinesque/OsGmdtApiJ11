@@ -12,7 +12,7 @@ package com.gmdt.osworksj11.domain.model;
 public enum EnumStatusOrdemServico {
     
     ABERTA,
-    FECHADA,
+    FINALIZADA,
     CANCELADA;
     
 }
